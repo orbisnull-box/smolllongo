@@ -1,0 +1,17 @@
+{
+    "name": "orbisnull/smolllongo",
+    "description": "Small driver to Mongodb",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "orbisnull",
+            "email": "zen4dev@gmail.com"
+        }
+    ],
+    "autoload": {
+            "psr-0": { "Smolllongo": "src/" }
+    },
+    "require": {
+
+    }
+}
