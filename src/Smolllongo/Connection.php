@@ -1,6 +1,8 @@
 <?php
 namespace Smolllongo;
 
+use \MongoClient;
+
 class Connection
 {
 
@@ -19,11 +21,9 @@ class Connection
     /**
      * @param array $options
      */
-    public function __construct(array $options = null)
+    public function __construct(array $options = [])
     {
-        if (!is_null($options)) {
-            $this->setOptions($options);
-        }
+        $this->setOptions($options);
         $this->mongo = new MongoClient($this->getConnectUri(), $this->getConnectParams());
     }
 
@@ -38,6 +38,7 @@ class Connection
         if (!empty($inputOptions['params'])) {
             $options['params'] = array_merge($options['server'], $inputOptions['params']);
         }
+        $this->options = $options;
     }
 
     public function getOptions()
@@ -74,6 +75,6 @@ class Connection
 
     public function getConnectParams()
     {
-        return $this->getOptions()['params'];
+        return (array) $this->getOptions()['params'];
     }
 }
